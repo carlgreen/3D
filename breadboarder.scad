@@ -193,7 +193,5 @@ module square_box() {
     }
 }
 
-square_box();
-
-translate([0, width + 10, 0])
-    rounded_box();
+// square_box();
+rounded_box();
