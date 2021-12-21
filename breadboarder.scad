@@ -100,10 +100,10 @@ translate([0, width + 10, 0])
             roundedTrayEnd();
             
             // input/output jacks
-            translate([-2*thickness, width * 1/3 - jack_radius/2, height/2])
+            translate([-2*thickness, width * 1/4 - jack_radius/2, height/2])
                 rotate([0,90,0])
                 cylinder(h=thickness*4, r=jack_radius);
-            translate([-2*thickness, width * 2/3 + jack_radius/2, height/2])
+            translate([-2*thickness, width * 3/4 + jack_radius/2, height/2])
                 rotate([0,90,0])
                 cylinder(h=thickness*4, r=jack_radius);
             
