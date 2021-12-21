@@ -58,7 +58,7 @@ module roundedTrayEnd() {
     difference() {
         translate([-thickness, 0, -thickness])
             trayLessEnd();
-        translate([length - height * 2/3, 0, height - height * 2/3])
+        translate([length - height * 2/3, -1, height - height * 2/3])
             difference() {
                 cube([height, width*1.4, height]);
                 translate([0, width*1.5, 0])
@@ -117,19 +117,19 @@ translate([0, width + 10, 0])
                 cylinder(h=thickness*4, r=large_toggle_radius);
             
             // other side pots
-            translate([30, width+2*thickness, height/2])
+            translate([30, 1+width+2*thickness, height/2])
                 rotate([90,0,0])
                 cylinder(h=thickness*4, r=large_toggle_radius);
-            translate([60, width+2*thickness, height/2])
+            translate([60, 1+width+2*thickness, height/2])
                 rotate([90,0,0])
                 cylinder(h=thickness*4, r=pot_radius);
-            translate([90, width+2*thickness, height/2])
+            translate([90, 1+width+2*thickness, height/2])
                 rotate([90,0,0])
                 cylinder(h=thickness*4, r=pot_radius);
-            translate([120, width+2*thickness, height/2])
+            translate([120, 1+width+2*thickness, height/2])
                 rotate([90,0,0])
                 cylinder(h=thickness*4, r=pot_radius);
-            translate([150, width+2*thickness, height/2])
+            translate([150, 1+width+2*thickness, height/2])
                 rotate([90,0,0])
                 cylinder(h=thickness*4, r=large_toggle_radius);
         }
