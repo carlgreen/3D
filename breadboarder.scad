@@ -84,6 +84,14 @@ module toggleMount() {
         translate([x/2, x/2, -10])
             cylinder(20, toggle_radius, toggle_radius, false);
     }
+    translate([0,x/2-thickness,0.1])
+        rotate([-90,0,0])
+        linear_extrude(height=thickness)
+        polygon(points=[[0,0],[x,0],[0,height]], paths=[[0,1,2]]);
+    translate([0,-x/2,0.1])
+        rotate([-90,0,0])
+        linear_extrude(height=thickness)
+        polygon(points=[[0,0],[x,0],[0,height]], paths=[[0,1,2]]);
 }
 
 translate([0, width + 10, 0])
