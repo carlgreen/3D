@@ -94,7 +94,7 @@ module toggleMount() {
         polygon(points=[[0,0],[x,0],[0,height]], paths=[[0,1,2]]);
 }
 
-translate([0, width + 10, 0])
+module rounded_box() {
     union() {
         difference() {
             roundedTrayEnd();
@@ -144,48 +144,56 @@ translate([0, width + 10, 0])
         translate([0-thickness,width/2,height-thickness])
             toggleMount();
     }
+}
 
-// base
-translate([-thickness, -thickness, -thickness])
-    cube([length + thickness, width + 2*thickness, thickness]);
-    
-// short wall
-difference() {
+module square_box() {
+    // base
     translate([-thickness, -thickness, -thickness])
-        cube([thickness, width + 2*thickness, height + thickness]);
-    translate([-2*thickness, 20, height/2])
-        rotate([0,90,0])
-        cylinder(h=thickness*4, r=jack_radius);
-    translate([-2*thickness, width-20, height/2])
-        rotate([0,90,0])
-        cylinder(h=thickness*4, r=jack_radius);
+        cube([length + thickness, width + 2*thickness, thickness]);
+
+    // short wall
+    difference() {
+        translate([-thickness, -thickness, -thickness])
+            cube([thickness, width + 2*thickness, height + thickness]);
+        translate([-2*thickness, 20, height/2])
+            rotate([0,90,0])
+            cylinder(h=thickness*4, r=jack_radius);
+        translate([-2*thickness, width-20, height/2])
+            rotate([0,90,0])
+            cylinder(h=thickness*4, r=jack_radius);
+    }
+
+    // long walls
+    difference() {
+        translate([-thickness, -thickness, -thickness])
+            cube([length + thickness, thickness, height + thickness]);
+        translate([60, 2*thickness, height/2])
+            rotate([90,0,0])
+            cylinder(h=thickness*4, r=8);
+        translate([90, 2*thickness, height/2])
+            rotate([90,0,0])
+            cylinder(h=thickness*4, r=8);
+        translate([120, 2*thickness, height/2])
+            rotate([90,0,0])
+            cylinder(h=thickness*4, r=8);
+    }
+
+    difference() {
+        translate([-thickness, width, -thickness])
+            cube([length + thickness, thickness, height + thickness]);
+        translate([60, width+2*thickness, height/2])
+            rotate([90,0,0])
+            cylinder(h=thickness*4, r=8);
+        translate([90, width+2*thickness, height/2])
+            rotate([90,0,0])
+            cylinder(h=thickness*4, r=8);
+        translate([120, width+2*thickness, height/2])
+            rotate([90,0,0])
+            cylinder(h=thickness*4, r=8);
+    }
 }
 
-// long walls
-difference() {
-    translate([-thickness, -thickness, -thickness])
-        cube([length + thickness, thickness, height + thickness]);
-    translate([60, 2*thickness, height/2])
-        rotate([90,0,0])
-        cylinder(h=thickness*4, r=8);
-    translate([90, 2*thickness, height/2])
-        rotate([90,0,0])
-        cylinder(h=thickness*4, r=8);
-    translate([120, 2*thickness, height/2])
-        rotate([90,0,0])
-        cylinder(h=thickness*4, r=8);
-}
+square_box();
 
-difference() {
-    translate([-thickness, width, -thickness])
-        cube([length + thickness, thickness, height + thickness]);
-    translate([60, width+2*thickness, height/2])
-        rotate([90,0,0])
-        cylinder(h=thickness*4, r=8);
-    translate([90, width+2*thickness, height/2])
-        rotate([90,0,0])
-        cylinder(h=thickness*4, r=8);
-    translate([120, width+2*thickness, height/2])
-        rotate([90,0,0])
-        cylinder(h=thickness*4, r=8);
-}
+translate([0, width + 10, 0])
+    rounded_box();
